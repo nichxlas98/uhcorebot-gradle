@@ -30,7 +30,7 @@ public class DiscordBot {
 
 
         // UhCore Discord Bot by @nichxlas98
-        bot = JDABuilder.createDefault("MTAxMDk2OTE1NjU0NTQyOTYxNA.GuHDA-.zpppu55tV4s-ojXrtyBLRoWqi1OuNtr0w_fiEU")
+        bot = JDABuilder.createDefault("TOKEN")
                 .setActivity(Activity.watching("UhCore's Development"))
                 .addEventListeners(new SuggestionCommand())
                 .addEventListeners(new ScriptCommand(), new ModalListeners())
