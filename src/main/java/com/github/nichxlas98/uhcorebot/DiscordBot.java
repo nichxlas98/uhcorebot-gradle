@@ -1,8 +1,9 @@
-package com.github.nichxlas98;
+package com.github.nichxlas98.uhcorebot;
 
-import com.github.nichxlas98.commands.ScriptCommand;
-import com.github.nichxlas98.commands.SuggestionCommand;
-import com.github.nichxlas98.listeners.ModalListeners;
+import com.github.nichxlas98.uhcorebot.commands.ScriptCommand;
+import com.github.nichxlas98.uhcorebot.commands.SuggestionCommand;
+import com.github.nichxlas98.uhcorebot.listeners.ModalListeners;
+import com.github.nichxlas98.uhcorebot.utils.SendConsoleUtil;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
@@ -13,8 +14,6 @@ import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 import javax.security.auth.login.LoginException;
 import java.util.Scanner;
 
-import static com.github.nichxlas98.utils.SendConsoleUtil.*;
-
 public class DiscordBot {
 
     public static JDA bot;
@@ -22,24 +21,24 @@ public class DiscordBot {
     public static void main(String[] args) throws LoginException, InterruptedException {
 
 
-        sendNotice("JDA Bot - Starting...");
-        sendNotice("Please Enter Your Server ID:");
+        SendConsoleUtil.sendNotice("JDA Bot - Starting...");
+        SendConsoleUtil.sendNotice("Please Enter Your Server ID:");
         // Using Scanner for Getting Input from User
         Scanner in = new Scanner(System.in);
         String guildID = in.nextLine();
 
 
         // UhCore Discord Bot by @nichxlas98
-        bot = JDABuilder.createDefault("MTAxMDk2OTE1NjU0NTQyOTYxNA.GuHDA-.zpppu55tV4s-ojXrtyBLRoWqi1OuNtr0w_fiEU")
+        bot = JDABuilder.createDefault("TOKEN")
                 .setActivity(Activity.watching("UhCore's Development"))
                 .addEventListeners(new SuggestionCommand())
                 .addEventListeners(new ScriptCommand(), new ModalListeners())
                 .build().awaitReady();
-        sendNotice("JDA Bot - Running!");
+        SendConsoleUtil.sendNotice("JDA Bot - Running!");
 
         Guild guild = bot.getGuildById(guildID);
         if (guild == null) {
-            sendError("Invalid Server Guild.");
+            SendConsoleUtil.sendError("Invalid Server Guild.");
             return;
         }
 
@@ -63,26 +62,26 @@ public class DiscordBot {
             Thread.currentThread().interrupt();
         }
 
-        for (int i = 0; i < 25; i++) {
+        for (int i = 0; i < 100; i++) {
             System.out.println(" ");
         }
 
         Scanner input = new Scanner(System.in);
-        sendNotice("Type 'HELP' and press ENTER/RETURN for a list of runnable commands.");
-        sendNotice("Type 'EXIT' and press ENTER/RETURN to close this program.");
+        SendConsoleUtil.sendNotice("Type 'HELP' and press ENTER/RETURN for a list of runnable commands.");
+        SendConsoleUtil.sendNotice("Type 'EXIT' and press ENTER/RETURN to close this program.");
         switch (input.nextLine().toUpperCase()) {
 
             case "EXIT":
-                sendNotice("JDA Bot - Shutting down...");
+                SendConsoleUtil.sendNotice("JDA Bot - Shutting down...");
                 bot.shutdownNow();
                 System.exit(0);
                 break;
             case "HELP":
-                sendMessage("- EXIT: Closes the Program and the JDA Session.");
+                SendConsoleUtil.sendMessage("- EXIT: Closes the Program and the JDA Session.");
                 checkCommands();
                 break;
             default:
-                sendError("Invalid Command!");
+                SendConsoleUtil.sendError("Invalid Command!");
                 checkCommands();
 
         }

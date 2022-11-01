@@ -1,4 +1,4 @@
-package com.github.nichxlas98.listeners;
+package com.github.nichxlas98.uhcorebot.listeners;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.interaction.ModalInteractionEvent;

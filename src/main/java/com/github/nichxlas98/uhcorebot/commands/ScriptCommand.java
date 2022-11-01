@@ -1,4 +1,4 @@
-package com.github.nichxlas98.commands;
+package com.github.nichxlas98.uhcorebot.commands;
 
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;

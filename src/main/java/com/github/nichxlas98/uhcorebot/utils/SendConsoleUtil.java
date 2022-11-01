@@ -1,4 +1,4 @@
-package com.github.nichxlas98.utils;
+package com.github.nichxlas98.uhcorebot.utils;
 
 public class SendConsoleUtil {
 
